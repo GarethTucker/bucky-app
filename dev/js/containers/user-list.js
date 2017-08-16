@@ -11,7 +11,7 @@ class UserList extends Component {
                 <li 
                     key={user.id} 
                     onClick={() => this.props.selectUser(user)}
-                >{user.first} {user.last}</li>
+                >{user.id} {user.first} {user.last}</li>
             );
         });
     }

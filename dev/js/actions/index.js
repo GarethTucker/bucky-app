@@ -1,5 +1,5 @@
+let nextId = 4;
 export const selectUser = (user) => {
-    console.log('You clicked on: ', user.first);
     return{
         type: "USER_SELECTED",
         payload: user 
@@ -7,9 +7,17 @@ export const selectUser = (user) => {
 };
 
 export const addUser = (user) => {
-    console.log('You added user: ', user.first);
+    user.id = nextId++;
     return{
         type: "ADD_USER",
+        payload: user  
+    }
+};
+
+export const deleteUser = (user) => {
+    console.log("deleteUser");
+    return{
+        type: "DELETE_USER",
         payload: user  
     }
 };
