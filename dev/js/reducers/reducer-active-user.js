@@ -3,6 +3,9 @@ export default function(state=null, action){
         case "USER_SELECTED":
             return action.payload;
             break;
+        case "DELETE_USER":
+            return null;
+            break;
     }
     return state;
 }

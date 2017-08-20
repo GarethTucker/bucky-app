@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {deleteUser} from '../actions/index';
 
@@ -16,7 +17,7 @@ class UserDetail extends Component {
                 <h2>{this.props.user.first} {this.props.user.last}</h2>
                 <h3>Age: {this.props.user.age}</h3>
                 <h3>Description: {this.props.user.description}</h3>
-                <button onClick={(e) => deleteUser(this.props.user)}>
+                <button onClick={() => this.props.deleteUser(this.props.user)}>
                     Remove User
                 </button>
             </div>
@@ -30,4 +31,8 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(UserDetail);
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({deleteUser: deleteUser}, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(UserDetail);
