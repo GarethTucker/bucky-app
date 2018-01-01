@@ -8,8 +8,8 @@ class UserList extends Component {
     createListItems() {
         return this.props.users.map((user) => {
             return (
-                <li 
-                    key={user.id} 
+                <li
+                    key={user.id}
                     onClick={() => this.props.selectUser(user)}
                 >{user.id} {user.first} {user.last}</li>
             );
@@ -31,8 +31,6 @@ function mapStateToProps(state) {
     }
 }
 
-function matchDispatchToProps(dispatch) {
-    return bindActionCreators({selectUser: selectUser}, dispatch);
-}
+const matchDispatchToProps = {selectUser: selectUser};
 
 export default connect(mapStateToProps, matchDispatchToProps)(UserList);
